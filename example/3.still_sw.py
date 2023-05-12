@@ -1,6 +1,6 @@
 '''
 # 엘레파츠 pi-cam kit 
-# 1-3. 사진 촬영 간단 테스트 예제
+# 3. 사진 촬영 간단 테스트 예제
 # 스위치를 누르면 사진을 촬영 후 종료합니다.
 '''
 import RPi.GPIO as GPIO
@@ -8,7 +8,7 @@ from picamera2 import Picamera2
 import datetime
 import time
 
-# 사진 촬영 스위치 GPIO
+# 사진 촬영 스위치 GPIO / Active LOW
 camera_sw = 21
 
 # GPIO
