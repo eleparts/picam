@@ -1,6 +1,6 @@
 '''
 # 엘레파츠 pi-cam kit 
-# 1. 간단 사진 촬영 테스트 예제
+# 1.사진 촬영 테스트 예제
 # 사진 촬영 1회 후 종료합니다.
 '''
 from picamera2 import Picamera2

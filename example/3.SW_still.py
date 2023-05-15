@@ -1,6 +1,6 @@
 '''
 # 엘레파츠 pi-cam kit 
-# 3. 스위치를 이용한 사진 촬영 테스트 예제
+# 3.스위치를 이용한 사진 촬영 테스트 예제
 # 스위치를 누르면 사진을 촬영 후 종료합니다.
 '''
 import RPi.GPIO as GPIO
@@ -14,7 +14,7 @@ camera_sw = 21
 save_dir = "/home/pi/Pictures/"
 
 
-# GPIO / 풀업
+# GPIO / camera_sw 핀 풀업
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(camera_sw, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
@@ -28,5 +28,4 @@ while(GPIO.input(camera_sw) == 1):
 picam2.start_and_capture_file(save_dir+"still.jpg")
 
 picam2.stop()
-
 GPIO.cleanup()

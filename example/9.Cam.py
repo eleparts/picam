@@ -1,6 +1,6 @@
 '''
 # 엘레파츠 pi-cam kit 
-# 7. LCD + 스위치를 이용한 사진 반복 촬영 테스트 예제
+# 8.LCD + 스위치를 이용한 사진 반복 촬영 테스트 예제
 # LCD에 미리보기를 출력하다가 스위치를 누르면 사진을 촬영 합니다.
 # Preview(미리보기) 기능은 LCD가 없으면 실행되지 않습니다. LCD(모니터) 및 VNC 환경에서만 실행됩니다.
 # 자동 종료되지 않으므로 예제를 실행한 창에서 Ctrl + C 를 눌러 종료 합니다.
@@ -52,8 +52,7 @@ capture_config = picam2.create_still_configuration(main={"size": (cam_width, cam
 picam2.set_controls({"AfMode": controls.AfModeEnum.Continuous})
 
 #picam2.start_preview(Preview.QTGL, 미리보기 창 설정)
-picam2.start_preview(Preview.QTGL, x=1, y=1, width=window_width, height=window_height)
-
+picam2.start_preview(Preview.QTGL, x=0, y=1, width=window_width, height=window_height)
 
 picam2.start()
 
