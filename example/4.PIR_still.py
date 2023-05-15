@@ -13,18 +13,18 @@ PIR_detect = 20
 # 사진 저장 경로
 save_dir = "/home/pi/Pictures/"
 
+
 # GPIO / 풀다운
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(PIR_detect, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
-
 picam2 = Picamera2()
 
-# 스위치가 눌릴 때까지 대기
-while(GPIO.input(PIR_detect) == 0):    
+# PIR 센서에서 신호가 올 때까지 대기, 신호가 오면 반복문 (대기)종료
+while(GPIO.input(PIR_detect) == 0): 
     time.sleep(0.1)
 
-# /home/pi/Pictures 경로에 저장
+# svae_dir 경로에 저장
 picam2.start_and_capture_file(save_dir+"still.jpg")
 
 picam2.stop()

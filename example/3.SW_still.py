@@ -13,14 +13,14 @@ camera_sw = 21
 # 사진 저장 경로
 save_dir = "/home/pi/Pictures/"
 
+
 # GPIO / 풀업
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(camera_sw, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
-
 picam2 = Picamera2()
 
-# 스위치가 눌릴 때까지 대기
+# 스위치가 눌릴 때까지 대기, 스위치가 눌리면 반복문 (대기)종료
 while(GPIO.input(camera_sw) == 1):    
     time.sleep(0.1)
 
