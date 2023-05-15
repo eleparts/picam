@@ -16,13 +16,13 @@ import time
 window_width = 800
 window_height = 480
 
-# 미리보기용 (lores stream)해상도 조절 2304x1296 / 최대 해상도 설정 시 버퍼 용량 부족 문제 발생
+# 미리보기용 (lores stream)해상도 설정, 2304x1296 권장 / 최대 해상도 설정 시 버퍼 용량 부족 문제 발생
 # LCD 해상도(main stream)보다 커야 하며, 사진 해상도와 비율이 다른 경우 촬영 사진과 다른 이미지가 표시될 수 있습니다.
 # 임의의 값 설정 시 카메라가 지원하는 해상도로 변경됩니다.
 Preview_width = 2304
 Preview_height = 1296
 
-# 촬영 사진 해상도 4608*2592
+# 촬영 사진 해상도 4608*2592 (Raspberry Pi Camera Module 3)
 cam_width = 4608
 cam_height = 2592
 #--------------------
@@ -48,7 +48,7 @@ picam2.configure(preview_config)
 # still_configuration / 촬영 사진 설정
 capture_config = picam2.create_still_configuration(main={"size": (cam_width, cam_height)})
 
-# Autofocus set (picam 3 자동 초첨 조절(오토포커스) 기능 on)
+# Autofocus set (Raspberry Pi Camera Module 3 자동 초첨 조절(오토포커스) 기능 on)
 picam2.set_controls({"AfMode": controls.AfModeEnum.Continuous})
 
 #picam2.start_preview(Preview.QTGL, 미리보기 창 설정)
