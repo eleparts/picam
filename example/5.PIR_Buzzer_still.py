@@ -1,6 +1,6 @@
 '''
 # 엘레파츠 pi-cam kit 
-# 5.PIR 센서 연동 사진 촬영 예제 + 부저 알림
+# 5.PIR 센서 + 부저 연동 사진 촬영 예제 
 # PIR 센서에 물체가 감지되면 부저로 알리고 사진을 촬영 후 종료합니다.
 '''
 import RPi.GPIO as GPIO
@@ -33,7 +33,7 @@ GPIO.output(buzzer, GPIO.HIGH)
 time.sleep(0.1)
 GPIO.output(buzzer, GPIO.LOW)
 
-# svae_dir 경로에 사진 저장
+# 사진 촬영, svae_dir 경로에 사진 저장
 picam2.start_and_capture_file(save_dir+"still.jpg")
 
 picam2.stop()

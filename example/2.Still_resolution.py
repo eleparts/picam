@@ -22,7 +22,7 @@ picam2.configure(capture_config)
 
 picam2.start()
 
-# svae_dirs 경로에 저장
+# 사진 촬영, svae_dirs 경로에 저장
 picam2.capture_file(save_dir+"still.jpg")
 
 picam2.stop()

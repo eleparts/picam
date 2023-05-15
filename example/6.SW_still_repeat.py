@@ -34,11 +34,11 @@ try:
 
         if(GPIO.input(camera_sw) == 0):     # 스위치 입력
 
-            # 연속 촬영을 위한 파일명에 날짜 추가
+            # 연속 촬영을 위해 파일명에 날짜 추가, 문자열 작성
             now = datetime.now()
             timeStr = now.strftime("%Y%m%d-%H%M%S")
 
-            # svae_dir 경로에 저장
+            # 사진 촬영, svae_dir 경로에 저장
             picam2.capture_file(save_dir+"still_"+timeStr+".jpg")
             time.sleep(0.5)
 

@@ -58,8 +58,8 @@ sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
 ```bash
 lxterminal -e python3 "자동 실행할 예제 파일(경로 포함)"
 
-# 예시, 8번 예제 자동실행
-lxterminal -e python3 /home/pi/picam/example/8.Cam.py
+# 예시, 9번 예제 자동실행
+lxterminal -e python3 /home/pi/picam/example/9.LCD_cam.py
 ```
 
 예제 파일의 절대 경로는 예제 디렉토리에서 ```pwd```명령어로 확인 가능합니다.  

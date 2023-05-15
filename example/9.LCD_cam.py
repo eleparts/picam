@@ -2,7 +2,7 @@
 # 엘레파츠 pi-cam kit 
 # 8.LCD + 스위치를 이용한 사진 반복 촬영 테스트 예제
 # LCD에 미리보기를 출력하다가 스위치를 누르면 사진을 촬영 합니다.
-# Preview(미리보기) 기능은 LCD가 없으면 실행되지 않습니다. LCD(모니터) 및 VNC 환경에서만 실행됩니다.
+# QTGL Preview(미리보기) 기능은 LCD가 없으면 실행되지 않습니다. LCD(모니터) 및 VNC 환경에서만 실행됩니다.
 # 자동 종료되지 않으므로 예제를 실행한 창에서 Ctrl + C 를 눌러 종료 합니다.
 '''
 import RPi.GPIO as GPIO
@@ -62,13 +62,13 @@ try:
         # 스위치가 눌릴 때까지 대기
         if(GPIO.input(camera_sw) == 0):     # 스위치 입력
 
-            # 연속 촬영을 위한 파일명에 날짜 추가
+            # 연속 촬영을 위해 파일명에 날짜 추가, 문자열 작성
             now = datetime.now()
             timeStr = now.strftime("%Y%m%d-%H%M%S")
 
             # 사진 촬영, svae_dir 경로에 저장
             picam2.switch_mode_and_capture_file(capture_config, save_dir+"picam_"+timeStr+".jpg")
-            time.sleep(1)
+            time.sleep(0.5)
 
         time.sleep(0.1)
 

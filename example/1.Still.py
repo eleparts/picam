@@ -11,7 +11,7 @@ save_dir = "/home/pi/Pictures/"
 
 picam2 = Picamera2()
 
-# svae_dir 경로에 저장
+# 사진 촬영, svae_dir 경로에 저장
 picam2.start_and_capture_file(save_dir+"still.jpg")
 
 picam2.stop()
