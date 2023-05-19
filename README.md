@@ -19,7 +19,19 @@ git clone https://github.com/eleparts/picam
 cd picam/example
 
 sudo python3 "예제 파일명(숫자 입력 후 tab키 누르면 자동완성됩니다)"
-```
+```  
+
+## 회로 연결하기  
+  
+예제 실행에 앞서 CSI 포트에 라즈베리파이 카메라를 연결 해 줍니다.  
+카메라는 반드시 라즈베리파이의 전원을 끈 상태에서 연결해 주어야 합니다.  
+  
+나머지 부품들은 아래 회로 이미지를 참고하여 연결 해 주시면 됩니다.  
+
+- **picam example schematic**  
+![pi_cam_schematic](./schematic/pi_cam_schematic.png)  
+  
+
 
 ## 권장 추가 설정  
 
