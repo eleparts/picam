@@ -11,7 +11,7 @@ from datetime import datetime
 import time
 
 # GPIO 핀
-PIR_detect = 26     # PIR 센서 출력 스위치 GPIO / Active HIGH
+PIR_detect = 26     # PIR 센서 출력 핀 연결 GPIO / Active HIGH
 buzzer = 19         # 부저 출력 GPIO
 
 # 사진 저장 경로
@@ -55,7 +55,7 @@ try:
             GPIO.output(buzzer, GPIO.LOW)
 
             while(GPIO.input(PIR_detect) == 1):    # 연속 촬영 방지, PIR 센서 OFF 대기
-                time.sleep(0.1)
+                time.sleep(0.2)
 
         time.sleep(0.1)
 

@@ -1,7 +1,7 @@
 '''
 # 엘레파츠 pi-cam kit 
-# 9.LCD + 스위치를 이용한 사진 반복 촬영 예제
-# LCD에 미리보기를 출력하다가 스위치를 누르면 사진을 촬영 합니다.
+# 8.LCD + PIR 센서 + 부저를 이용한 사진 반복 촬영 예제
+# LCD에 미리보기를 출력하다가 사람이 감지되면 부저로 알림 후 사진을 촬영 합니다.
 # QTGL Preview(미리보기) 기능은 LCD가 없으면 실행되지 않습니다. LCD(모니터) 및 VNC 환경에서만 실행됩니다.
 # 자동 종료되지 않으므로 예제를 실행한 창에서 Ctrl + C 를 눌러 종료 합니다.
 '''
@@ -27,16 +27,19 @@ cam_width = 4608
 cam_height = 2592
 #--------------------
 
-# 사진 촬영 스위치 GPIO / Active LOW
-camera_sw = 21
+# GPIO 핀
+PIR_detect = 26     # PIR 센서 출력 핀 연결 GPIO / Active HIGH
+buzzer = 19         # 부저 출력 GPIO
 
 # 사진 저장 경로
 save_dir = "/home/pi/Pictures/"
 
 
-# GPIO
+# GPIO / PIR = IN & 풀다운 / 부저 OUT & LOW 설정
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(camera_sw,GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(PIR_detect, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(buzzer, GPIO.OUT)
+GPIO.output(buzzer, GPIO.LOW)
 
 # camera
 picam2 = Picamera2()
@@ -60,15 +63,25 @@ try:
     while True:
 
         # 스위치가 눌릴 때까지 대기
-        if(GPIO.input(camera_sw) == 0):     # 스위치 입력
+        if(GPIO.input(PIR_detect) == 1):        # PIR 센서 입력
+
+            # PIR 감지범위가 넓어 카메라 촬영 시점 조절을 위한 촬영 선 딜레이 / 필요에 따라 수정&사용
+            # time.sleep(2) 
 
             # 연속 촬영을 위해 파일명에 날짜 추가, 문자열 작성
             now = datetime.now()
             timeStr = now.strftime("%Y%m%d-%H%M%S")
 
+            # 부저 ON - OFF (0.3s)
+            GPIO.output(buzzer, GPIO.HIGH)
+            time.sleep(0.3)
+            GPIO.output(buzzer, GPIO.LOW)
+
             # 사진 촬영, svae_dir 경로에 저장
             picam2.switch_mode_and_capture_file(capture_config, save_dir+"picam_"+timeStr+".jpg")
-            time.sleep(0.5)
+
+            while(GPIO.input(PIR_detect) == 1):    # 연속 촬영 방지, PIR 센서 OFF 대기
+                time.sleep(0.2)
 
         time.sleep(0.1)
 
