@@ -71,10 +71,10 @@ sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
 ```bash
 lxterminal -e python3 "자동 실행할 예제 파일(경로 포함)"
 
-# 예시, ~/picam/QT_example 경로의 picam2_switch.py 예제 자동실행
-lxterminal -e python3 ./picam/QT_example/picam2_switch.py
+# 예시, ~/picam/QT_example 경로의 picam_switch.py 예제 자동실행
+lxterminal -e python3 ./picam/QT_example/picam_switch.py
 # 또는
-lxterminal -e python3 /home/pi/picam/QT_example/picam2_switch.py    # user name 'pi'
+lxterminal -e python3 /home/pi/picam/QT_example/picam_switch.py    # user name 'pi'
 ```
 
 예제 파일의 전체 경로 확인 방법은 예제 디렉토리로 이동해 ```pwd```명령어를 입력해 확인 가능합니다.  
