@@ -28,9 +28,12 @@ cam_width = 4608
 cam_height = 2592
 #--------------------
 
-# GPIO 설정
+# 사진 촬영 스위치 GPIO
+camera_sw = 21
+
+# GPIO 설정 / 스위치 핀 풀업
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(21, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(camera_sw, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 # 사진 저장 경로
 save_dir = "/home/pi/Pictures/"
@@ -60,8 +63,8 @@ qpicamera2 = QGlPicamera2(picam2, width=window_width, height=window_height, keep
 
 window = QWidget()
 
-# 함수 호출 이벤트 설정 / bouncetime: 연속 호출 제한(1~1.5초 권장, 빠르게 연속으로 누를 시 preview 화면 중단 문제 발생)
-GPIO.add_event_detect(21, GPIO.FALLING, callback=button_clicked, bouncetime=1500)        # GPIO 스위치 이벤트
+# 함수 호출 이벤트 설정
+GPIO.add_event_detect(camera_sw, GPIO.FALLING, callback=button_clicked, bouncetime=1500)        # GPIO 스위치 이벤트
 
 # 위젯 설정, 배치
 layout_h = QHBoxLayout()
