@@ -6,7 +6,7 @@
   
   
 ## 본품 구성 키트  
-[제작중입니다](https://www.eleparts.co.kr/promotion/cate_event?event_seq=1622)  
+[라즈베리파이 카메라 키트](https://www.eleparts.co.kr/goods/view?no=13010139)  
   
   
 ## 예제 다운로드&실행  
